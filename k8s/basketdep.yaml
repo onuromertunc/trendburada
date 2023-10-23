@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basket
+  namespace: trendburada
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: basket
+  template:
+    metadata:
+      labels:
+        app: basket
+    spec:
+      containers:
+      - name: basket
+        image: onuromertunc/trendburada:basket
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: basket
+  namespace: trendburada
+spec:
+  selector:
+    app: basket
+  ports:
+  - port: 80
+    targetPort: 80
+  type: LoadBalancer

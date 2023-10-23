@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order
+  namespace: trendburada
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order
+  template:
+    metadata:
+      labels:
+        app: order
+    spec:
+      containers:
+      - name: order
+        image: onuromertunc/trendburada:order
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order
+  namespace: trendburada
+spec:
+  selector:
+    app: order
+  ports:
+  - port: 80
+    targetPort: 80
+  type: LoadBalancer
