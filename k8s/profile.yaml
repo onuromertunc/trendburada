@@ -16,6 +16,7 @@ spec:
       containers:
       - name: profile
         image: onuromertunc/trendburada:profile
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
 ---

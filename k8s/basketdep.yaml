@@ -16,6 +16,7 @@ spec:
       containers:
       - name: basket
         image: onuromertunc/trendburada:basket
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
 ---
